@@ -30,6 +30,6 @@ class Frag1 : Fragment() {
     }
 
     private fun navToFrag2() {
-        findNavController().navigate(Frag1Directions.navigateToFrag2())
+        findNavController().navigate(Frag1Directions.navigateToFrag2(22))
     }
 }
