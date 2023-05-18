@@ -31,4 +31,15 @@
             app:argType="integer"
             android:defaultValue="2" />
     </fragment>
+    <fragment
+        android:id="@+id/frag3"
+        android:name="com.example.navtest.Frag3"
+        android:label="fragment_frag3"
+        tools:layout="@layout/fragment_frag3" >
+        <action
+            android:id="@+id/navigateToFrag1"
+            app:destination="@id/frag1"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
+    </fragment>
 </navigation>

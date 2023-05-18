@@ -5,6 +5,8 @@
     <color name="color_primary_variant">#FF3700B3</color>
     <color name="color_secondary">#FF03DAC5</color>
     <color name="color_secondary_variant">#FF018786</color>
+    <color name="color_terciary">#FF9800</color>
+    <color name="color_terciary_variant">#CD6B03</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

@@ -2,16 +2,16 @@ package com.example.navtest
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
 import com.example.navtest.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,13 +23,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var listener: NavController.OnDestinationChangedListener
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        setNavController()
         setDrawerNavigation()
-        setAppBarNavigation()
-        setAppBarColor()
+        setBottomNavigation()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -38,26 +39,31 @@ class MainActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 
-    private fun setDrawerNavigation() {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(navController) ||
+                super.onOptionsItemSelected(item)
+    }
+
+    private fun setNavController() {
         val navHostFragment =
             (supportFragmentManager.findFragmentById(binding.navHost.id) as NavHostFragment)
         navController = navHostFragment.navController
-        drawerLayout = binding.drawerLayout
         binding.navigationView.setupWithNavController(navController)
     }
 
-    private fun setAppBarNavigation() {
+    private fun setDrawerNavigation() {
+        drawerLayout = binding.drawerLayout
         appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
-    }
 
-    private fun setAppBarColor() {
         listener =
-            NavController.OnDestinationChangedListener { controller, destination, arguments ->
+            NavController.OnDestinationChangedListener { _, destination, _ ->
                 if (destination.id == R.id.frag1) {
                     supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.color_primary_variant)))
                 } else if (destination.id == R.id.frag2) {
                     supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.color_secondary_variant)))
+                } else if (destination.id == R.id.frag3) {
+                    supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.color_terciary_variant)))
                 }
             }
     }
@@ -70,5 +76,10 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         navController.removeOnDestinationChangedListener(listener)
+    }
+
+    private fun setBottomNavigation() {
+        bottomNavigationView = binding.bottomNav
+        bottomNavigationView.setupWithNavController(navController)
     }
 }

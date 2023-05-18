@@ -6,20 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.navtest.databinding.FragmentFrag1Binding
 
-class Frag1 : Fragment() {
+import com.example.navtest.databinding.FragmentFrag3Binding
 
-    private var _binding: FragmentFrag1Binding? = null
+class Frag3 : Fragment() {
+
+    private var _binding: FragmentFrag3Binding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFrag1Binding.inflate(inflater, container, false)
+        _binding = FragmentFrag3Binding.inflate(inflater, container, false)
 
-        binding.textView1.setOnClickListener { navToFrag2()}
+        binding.textView3.setOnClickListener { navToFrag1() }
 
         return binding.root
     }
@@ -29,7 +30,7 @@ class Frag1 : Fragment() {
         _binding = null
     }
 
-    private fun navToFrag2() {
-        findNavController().navigate(Frag1Directions.navigateToFrag2())
+    private fun navToFrag1() {
+        findNavController().navigate(Frag3Directions.navigateToFrag1())
     }
 }
