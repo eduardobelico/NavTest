@@ -19,7 +19,7 @@ class Frag1 : Fragment() {
     ): View {
         _binding = FragmentFrag1Binding.inflate(inflater, container, false)
 
-        binding.textView1.setOnClickListener { navToFrag2()}
+        binding.textView1.setOnClickListener { navToFrag2() }
 
         return binding.root
     }

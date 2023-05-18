@@ -9,18 +9,19 @@
         android:id="@+id/frag1"
         android:name="com.example.navtest.Frag1"
         android:label="fragment_frag1"
-        tools:layout="@layout/fragment_frag1" >
+        tools:layout="@layout/fragment_frag1">
         <action
             android:id="@+id/navigateToFrag2"
             app:destination="@id/frag2"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
+
     <fragment
         android:id="@+id/frag2"
         android:name="com.example.navtest.Frag2"
         android:label="fragment_frag2"
-        tools:layout="@layout/fragment_frag2" >
+        tools:layout="@layout/fragment_frag2">
         <action
             android:id="@+id/navigateToFrag1"
             app:destination="@id/frag1"
@@ -28,18 +29,19 @@
             app:exitAnim="@anim/nav_default_exit_anim" />
         <argument
             android:name="number"
-            app:argType="integer"
-            android:defaultValue="2" />
+            android:defaultValue="2"
+            app:argType="integer" />
     </fragment>
+
     <fragment
         android:id="@+id/frag3"
         android:name="com.example.navtest.Frag3"
         android:label="fragment_frag3"
-        tools:layout="@layout/fragment_frag3" >
+        tools:layout="@layout/fragment_frag3">
         <action
             android:id="@+id/navigateToFrag1"
             app:destination="@id/frag1"
             app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 </navigation>

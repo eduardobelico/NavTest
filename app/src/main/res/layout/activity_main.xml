@@ -24,9 +24,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/my_nav" />
 
-        <!--   bottomNavigationView aqui-->
-        <!--   bottom do containerView binda com top do bottomNavView-->
-
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
