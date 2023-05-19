@@ -3,7 +3,10 @@ package com.example.navtest
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.ActionBarOverlayLayout.ActionBarVisibilityCallback
+import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -59,12 +62,26 @@ class MainActivity : AppCompatActivity() {
             NavController.OnDestinationChangedListener { _, destination, _ ->
                 if (destination.id == R.id.frag1) {
                     supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.color_primary_variant)))
+                    showBottomNavigation()
                 } else if (destination.id == R.id.frag2) {
                     supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.color_secondary_variant)))
+                    showBottomNavigation()
                 } else if (destination.id == R.id.frag3) {
                     supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.color_terciary_variant)))
+                    showBottomNavigation()
+                } else if (destination.id == R.id.splashFragment) {
+                    supportActionBar?.hide()
+                    hideBottomNavigation()
                 }
             }
+    }
+
+    private fun hideBottomNavigation() {
+        bottomNavigationView.visibility = View.GONE
+    }
+
+    private fun showBottomNavigation() {
+        bottomNavigationView.visibility = View.VISIBLE
     }
 
     override fun onResume() {
